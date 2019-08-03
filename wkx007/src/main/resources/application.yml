@@ -1,0 +1,17 @@
+server:
+  port: 8090
+
+# datasource
+spring:
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@localhost:1521:BookmManage
+    username: veis
+    password: 123456
+
+# logback
+logging:
+  config: classpath:logback-spring.xml
+  path: /applogs
+  level:
+    root: info
