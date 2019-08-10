@@ -16,7 +16,8 @@ public class Constants {
         ACCOUNT_LIST_ERROR("000002", "用户列表查询失败"),
         ACCOUNT_FINDACCOUNT_ERROR("000003", "查询此用户信息失败"),
         ACCOUNT_UPDATE_ERROR("000004", "信息修改失败"),
-        UNDEFINTY_ERROR_CODE("000015", "未定义的枚举编码"),;
+        UNDEFINTY_ERROR_CODE("000015", "未定义的枚举编码"),
+        MAIL_SEND_ERROR("000016","邮件发送错误");
         private String code;
         private String msg;
 

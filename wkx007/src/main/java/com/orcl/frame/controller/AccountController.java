@@ -4,10 +4,12 @@ import com.github.pagehelper.PageInfo;
 import com.orcl.frame.model.Account;
 import com.orcl.frame.request.AccountRequest;
 import com.orcl.frame.service.AccountServiceInterface;
+import com.orcl.frame.utils.MailUtil;
 import com.orcl.frame.utils.common.Constants;
 import com.orcl.frame.utils.exception.ProjectException;
 import com.orcl.frame.vo.Response;
 import com.orcl.frame.vo.Result;
+import com.orcl.frame.vo.W;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -92,6 +94,22 @@ public class AccountController {
           result.setState(new ProjectException(e.getError()));
         } catch (Exception e) {
             result.setState(new ProjectException(Constants.Return.ACCOUNT_FINDACCOUNT_ERROR, e.getMessage()));
+        }
+        response.setResult(result);
+        return response.toJson();
+    }
+
+    @ApiOperation(value = "sendmail", notes = "send mail TO SomeBody")
+    @GetMapping("/sendmail")
+    public String sendMail(@RequestParam(value = "to",required = true,defaultValue = "1246653289@qq.com") String to,
+                           @RequestParam(value = "subject",required = true,defaultValue = "邮箱验证") String subject,
+                           @RequestParam(value = "code",required = true,defaultValue = "9636") String code) throws Exception {
+        Response response = new Response();
+        Result result = new Result();
+        try {
+            new MailUtil().sendMail(to, subject, code);
+        } catch (Exception e) {
+            result.setState(new ProjectException(Constants.Return.MAIL_SEND_ERROR, e.getMessage()));
         }
         response.setResult(result);
         return response.toJson();
