@@ -17,7 +17,13 @@ public class Constants {
         ACCOUNT_FINDACCOUNT_ERROR("000003", "查询此用户信息失败"),
         ACCOUNT_UPDATE_ERROR("000004", "信息修改失败"),
         UNDEFINTY_ERROR_CODE("000015", "未定义的枚举编码"),
-        MAIL_SEND_ERROR("000016","邮件发送错误");
+        MAIL_SEND_ERROR("000016","邮件发送错误"),
+        LOGIN_PARAM_ISNULL("000017","参数为空"),
+        LOGIN_USERNAME_ISNULL("000018","用户名为空"),
+        LOGIN_PASSWORD_ISNULL("000019","密码为空"),
+        LOGINUSER_INFO_ISNULL("000020","没有此用户信息"),
+        LOGIN_ERROR("000021","登录失败"),
+        ;
         private String code;
         private String msg;
 

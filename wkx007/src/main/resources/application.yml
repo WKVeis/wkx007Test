@@ -14,4 +14,4 @@ logging:
   config: classpath:logback-spring.xml
   path: /applogs
   level:
-    root: info
+    root: debug

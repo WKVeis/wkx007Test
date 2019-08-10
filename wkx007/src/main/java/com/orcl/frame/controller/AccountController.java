@@ -27,6 +27,13 @@ public class AccountController {
     @Autowired
     private AccountServiceInterface accountServiceInterface;
 
+    /**
+     * add account
+     *
+     * @param account
+     * @return
+     * @throws Exception
+     */
     @PostMapping("/add")
     @ApiOperation(value = "User addition", notes = "Current class")
     public String add(@RequestBody Account account) throws Exception {
@@ -46,6 +53,13 @@ public class AccountController {
         return response.toJson();
     }
 
+    /**
+     * findByPage
+     *
+     * @param accountRequest
+     * @return
+     * @throws Exception
+     */
     @PostMapping("/list")
     @ApiOperation(value = "PageList", notes = "Data pagination")
     public String list(@RequestBody AccountRequest accountRequest) throws Exception {
@@ -63,6 +77,13 @@ public class AccountController {
         return response.toJson();
     }
 
+    /**
+     * update Object
+     *
+     * @param account
+     * @return
+     * @throws Exception
+     */
     @PostMapping("/update")
     @ApiOperation(value = "update", notes = "Change information")
     public String update(@RequestBody Account account) throws Exception {
@@ -82,16 +103,23 @@ public class AccountController {
         return response.toJson();
     }
 
+    /**
+     * find data by id
+     *
+     * @param id
+     * @return
+     * @throws Exception
+     */
     @GetMapping("/findById/{id}")
     @ApiOperation(value = "findById", notes = "find data by ID")
-    public String findById(@PathVariable Long id) throws Exception{
+    public String findById(@PathVariable Long id) throws Exception {
         Result result = new Result();
         Response response = new Response();
         try {
             Account account = accountServiceInterface.findById(id);
             result.getData().put("data", account);
         } catch (ProjectException e) {
-          result.setState(new ProjectException(e.getError()));
+            result.setState(new ProjectException(e.getError()));
         } catch (Exception e) {
             result.setState(new ProjectException(Constants.Return.ACCOUNT_FINDACCOUNT_ERROR, e.getMessage()));
         }
@@ -99,11 +127,20 @@ public class AccountController {
         return response.toJson();
     }
 
+    /**
+     * the funtion of sendMail
+     *
+     * @param to
+     * @param subject
+     * @param code
+     * @return
+     * @throws Exception
+     */
     @ApiOperation(value = "sendmail", notes = "send mail TO SomeBody")
     @GetMapping("/sendmail")
-    public String sendMail(@RequestParam(value = "to",required = true,defaultValue = "1246653289@qq.com") String to,
-                           @RequestParam(value = "subject",required = true,defaultValue = "邮箱验证") String subject,
-                           @RequestParam(value = "code",required = true,defaultValue = "9636") String code) throws Exception {
+    public String sendMail(@RequestParam(value = "to", required = true, defaultValue = "1246653289@qq.com") String to,
+                           @RequestParam(value = "subject", required = true, defaultValue = "邮箱验证") String subject,
+                           @RequestParam(value = "code", required = true, defaultValue = "9636") String code) throws Exception {
         Response response = new Response();
         Result result = new Result();
         try {
@@ -115,5 +152,6 @@ public class AccountController {
         return response.toJson();
     }
 }
+
 
 

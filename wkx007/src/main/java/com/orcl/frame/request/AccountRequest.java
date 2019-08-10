@@ -13,7 +13,7 @@ import lombok.Data;
 @Data
 public class AccountRequest extends PageParams {
     @ApiModelProperty(name = "账号",required=false,example="admin",dataType = "String")
-    private String name;
+    private String username;
     @ApiModelProperty(name= "性别",required=false,example="男",dataType = "String")
     private String sex;
     @ApiModelProperty(name = "年龄",required=false,example="20",dataType = "int")

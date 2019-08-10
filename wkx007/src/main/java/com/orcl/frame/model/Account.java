@@ -19,13 +19,17 @@ import java.util.Date;
 public class Account implements Serializable {
     @TableId(type = IdType.AUTO)   //mybatisplus 主键自动增长
     private Long id;
-    @TableField(value = "name")
-    private String name;
+    @TableField(value = "username")
+    private String username;
+    @TableField(value = "password")
+    private String password;
     @TableField(value = "sex")
     private String sex;
     @TableField(value = "age")
     private int age;
     @TableField(value = "Create_Time")
     private Date CreateTime;
+    @TableField(value = "Update_Time")
+    private Date UpdateTime;
 
 }

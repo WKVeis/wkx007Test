@@ -3,6 +3,7 @@ package com.orcl.frame.service;
 import com.github.pagehelper.PageInfo;
 import com.orcl.frame.model.Account;
 import com.orcl.frame.request.AccountRequest;
+import com.orcl.frame.request.LoginRequest;
 import com.orcl.frame.utils.exception.ProjectException;
 
 /**
@@ -19,4 +20,5 @@ public interface AccountServiceInterface  {
 
     Account findById(Long id) throws ProjectException;
 
+    Account findLoginAccount(LoginRequest request) throws ProjectException;
 }
