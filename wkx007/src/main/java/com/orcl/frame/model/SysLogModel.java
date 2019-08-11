@@ -35,6 +35,9 @@ public class SysLogModel implements Serializable {
     //IP地址
     @TableField(value = "ip")
     private String ip;
+    //信息描述
+    @TableField(value = "description")
+    private String description;
     //创建时间
     @TableField(value = "Create_Date")
     private Date createDate;

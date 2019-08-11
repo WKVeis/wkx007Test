@@ -7,10 +7,13 @@ import com.orcl.frame.service.SysLogServiceInterface;
 import com.orcl.frame.utils.IPUtils;
 import com.orcl.frame.utils.annotation.SysLog;
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Component;
@@ -33,17 +36,19 @@ import java.util.List;
 public class SysLogAspect {
     @Autowired
     private SysLogServiceInterface serviceInterface;
+    private static final Logger LOGGER = LoggerFactory.getLogger(WebLogAspect.class);
+
     //Pointcut的名称 就是simplePointcut，此方法不能有返回值，该方法只是一个标示
     //用@annotation指定我们定义的注解
     @Pointcut("@annotation(com.orcl.frame.utils.annotation.SysLog)")
     public void logPointCut() {
     }
+    SysLogModel sysLog = new SysLogModel();//日志实体类
      //JoinPoint我们所说的连接点，封装了SpringAop中切面方法的信息,在切面方法中添加JoinPoint参数,就可以获取到封装了该方法信息的JoinPoint对象
      @Before("logPointCut()")
     public void saveLog(JoinPoint joinPoint) {
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
         Method method = signature.getMethod();
-        SysLogModel sysLog = new SysLogModel();//日志实体类
         SysLog syslog = method.getAnnotation(SysLog.class);
         if (null != syslog) {
             //注解上的描述
@@ -69,7 +74,14 @@ public class SysLogAspect {
         String userName ="007" ;//当前登录的用户名
         sysLog.setUserName(userName);
         sysLog.setCreateDate(new Date());
+//        serviceInterface.insert(sysLog);
+    }
+    @AfterReturning(returning = "ret", pointcut = "logPointCut()")
+    public void doAfterReturning(Object ret) throws Throwable {
+        // 处理完请求，返回内容
+        LOGGER.info("RESPONSE : " + ret);
+        String res = ret.toString();
+        sysLog.setDescription(res);
         serviceInterface.insert(sysLog);
     }
-
 }
