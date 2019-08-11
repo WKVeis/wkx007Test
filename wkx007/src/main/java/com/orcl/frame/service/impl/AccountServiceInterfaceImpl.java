@@ -1,8 +1,6 @@
 package com.orcl.frame.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.orcl.frame.dao.AccountDao;
@@ -45,7 +43,7 @@ public class AccountServiceInterfaceImpl implements AccountServiceInterface {
     public PageInfo list(AccountRequest accountRequest) throws ProjectException {
         PageHelper.startPage(accountRequest.getPageNum(), accountRequest.getPageSize());
         LambdaQueryWrapper<Account> queryWrapper = new LambdaQueryWrapper();
-        queryWrapper.eq(StringUtils.isNotBlank(accountRequest.getUsername()), Account::getUsername, accountRequest.getUsername())
+        queryWrapper.eq(StringUtils.isNotBlank(accountRequest.getUserName()), Account::getUserName, accountRequest.getUserName())
                 .eq(StringUtils.isNotBlank(accountRequest.getSex()), Account::getSex, accountRequest.getSex())
                 .eq(accountRequest.getAge()!=null, Account::getAge, accountRequest.getAge());
         List<Account> list = accountDao.selectList(queryWrapper);
@@ -77,7 +75,7 @@ public class AccountServiceInterfaceImpl implements AccountServiceInterface {
     @Override
     public Account findLoginAccount(LoginRequest request) throws ProjectException {
         LambdaQueryWrapper<Account> queryWrapper = new LambdaQueryWrapper<>();
-        queryWrapper.eq(StringUtils.isNotBlank(request.getUsername()), Account::getUsername, request.getUsername())
+        queryWrapper.eq(StringUtils.isNotBlank(request.getUserName()), Account::getUserName, request.getUserName())
                     .eq(StringUtils.isNotBlank(request.getPassword()),Account::getPassword,request.getPassword());
         Account account = accountDao.selectOne(queryWrapper);
         return account;

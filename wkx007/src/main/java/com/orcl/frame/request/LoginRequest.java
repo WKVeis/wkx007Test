@@ -11,7 +11,7 @@ import lombok.Data;
 @Data
 public class LoginRequest {
     @ApiModelProperty(value = "账户", required = true, example = "魏微")
-    private String username;
+    private String userName;
     @ApiModelProperty(value = "密码", required = true, example = "!QAZ2wsx")
     private String password;
 }

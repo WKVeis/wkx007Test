@@ -5,6 +5,7 @@ import com.orcl.frame.model.Account;
 import com.orcl.frame.request.AccountRequest;
 import com.orcl.frame.service.AccountServiceInterface;
 import com.orcl.frame.utils.MailUtil;
+import com.orcl.frame.utils.annotation.SysLog;
 import com.orcl.frame.utils.common.Constants;
 import com.orcl.frame.utils.exception.ProjectException;
 import com.orcl.frame.vo.Response;
@@ -34,6 +35,7 @@ public class AccountController {
      * @return
      * @throws Exception
      */
+    @SysLog("添加账户")
     @PostMapping("/add")
     @ApiOperation(value = "User addition", notes = "Current class")
     public String add(@RequestBody Account account) throws Exception {
@@ -84,6 +86,7 @@ public class AccountController {
      * @return
      * @throws Exception
      */
+    @SysLog("更改账户信息")
     @PostMapping("/update")
     @ApiOperation(value = "update", notes = "Change information")
     public String update(@RequestBody Account account) throws Exception {
@@ -136,6 +139,7 @@ public class AccountController {
      * @return
      * @throws Exception
      */
+    @SysLog("发送邮件")
     @ApiOperation(value = "sendmail", notes = "send mail TO SomeBody")
     @GetMapping("/sendmail")
     public String sendMail(@RequestParam(value = "to", required = true, defaultValue = "1246653289@qq.com") String to,

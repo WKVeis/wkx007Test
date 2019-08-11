@@ -3,6 +3,7 @@ package com.orcl.frame.controller;
 import com.orcl.frame.model.Account;
 import com.orcl.frame.request.LoginRequest;
 import com.orcl.frame.service.AccountServiceInterface;
+import com.orcl.frame.utils.annotation.SysLog;
 import com.orcl.frame.utils.common.Constants;
 import com.orcl.frame.utils.exception.ProjectException;
 import com.orcl.frame.vo.Response;
@@ -36,7 +37,7 @@ public class LoginController {
             if (null == request) {//当登入信息为null时
                 throw new ProjectException(Constants.Return.LOGIN_PARAM_ISNULL);
             }
-            if (StringUtils.isBlank(request.getUsername())) {//当用户名为空时
+            if (StringUtils.isBlank(request.getUserName())) {//当用户名为空时
                 throw new ProjectException(Constants.Return.LOGIN_USERNAME_ISNULL);
             }
             if (StringUtils.isBlank(request.getPassword())) {//当密码为空时
@@ -48,8 +49,8 @@ public class LoginController {
             }
             String token = UUID.randomUUID().toString().replace("-", "") + "2019";
             result.getData().put("token", token);
-            result.getData().put("loginUser", request.getUsername());
-            session.setAttribute("loginUser", account.getUsername());
+            result.getData().put("loginUser", request.getUserName());
+            session.setAttribute("loginUser", account.getUserName());
         } catch (ProjectException e) {
             result.setState(e.getError());
         } catch (Exception e) {

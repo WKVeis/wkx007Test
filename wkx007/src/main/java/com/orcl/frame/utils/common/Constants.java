@@ -23,6 +23,7 @@ public class Constants {
         LOGIN_PASSWORD_ISNULL("000019","密码为空"),
         LOGINUSER_INFO_ISNULL("000020","没有此用户信息"),
         LOGIN_ERROR("000021","登录失败"),
+        SYSTEMLOG_LIST_ERROR("000022", "日志列表获取失败"),
         ;
         private String code;
         private String msg;

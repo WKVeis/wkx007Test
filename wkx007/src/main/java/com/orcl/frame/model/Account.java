@@ -15,12 +15,12 @@ import java.util.Date;
  * @DESC:
  */
 @Data
-@TableName("Account")
+@TableName("ACCOUNT")
 public class Account implements Serializable {
     @TableId(type = IdType.AUTO)   //mybatisplus 主键自动增长
     private Long id;
     @TableField(value = "username")
-    private String username;
+    private String userName;
     @TableField(value = "password")
     private String password;
     @TableField(value = "sex")
