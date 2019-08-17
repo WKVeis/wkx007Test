@@ -105,21 +105,40 @@ public class AccountController {
         response.setResult(result);
         return response.toJson();
     }
+    @SysLog("删除账户信息")
+    @PostMapping("/del")
+    @ApiOperation(value = "update", notes = "Change information")
+    public String delete(@RequestBody AccountRequest request) throws Exception {
+        Result result = new Result();
+        Response response = new Response();
+        try {
+            int res = accountServiceInterface.del(request.getId());
+            if (res == 0) {
+                throw new ProjectException(Constants.Return.ACCOUNT_DELETE_ERROR);
+            }
+        } catch (ProjectException e) {
+            result.setState(e.getError());
+        } catch (Exception e) {
+            result.setState(new ProjectException(Constants.Return.ACCOUNT_DELETE_ERROR, e.getMessage()));
+        }
+        response.setResult(result);
+        return response.toJson();
+    }
 
     /**
      * find data by id
      *
-     * @param id
+     * @param
      * @return
      * @throws Exception
      */
-    @GetMapping("/findById/{id}")
+    @PostMapping("/findById")
     @ApiOperation(value = "findById", notes = "find data by ID")
-    public String findById(@PathVariable Long id) throws Exception {
+    public String findById(@RequestBody AccountRequest request) throws Exception {
         Result result = new Result();
         Response response = new Response();
         try {
-            Account account = accountServiceInterface.findById(id);
+            Account account = accountServiceInterface.findById(request.getId());
             result.getData().put("data", account);
         } catch (ProjectException e) {
             result.setState(new ProjectException(e.getError()));

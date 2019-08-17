@@ -18,5 +18,7 @@ public class AccountRequest extends PageParams {
     private String sex;
     @ApiModelProperty(name = "年龄",required=false,example="20",dataType = "int")
     private Integer age;
+    @ApiModelProperty(name = "id",required=false,dataType = "Long")
+    private Long id;
 
 }

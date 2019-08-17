@@ -73,6 +73,12 @@ public class AccountServiceInterfaceImpl implements AccountServiceInterface {
     }
 
     @Override
+    public int del(Long id) {
+        int i = accountDao.deleteById(id);
+        return i;
+    }
+
+    @Override
     public Account findLoginAccount(LoginRequest request) throws ProjectException {
         LambdaQueryWrapper<Account> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(StringUtils.isNotBlank(request.getUserName()), Account::getUserName, request.getUserName())

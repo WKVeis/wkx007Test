@@ -21,4 +21,6 @@ public interface AccountServiceInterface  {
     Account findById(Long id) throws ProjectException;
 
     Account findLoginAccount(LoginRequest request) throws ProjectException;
+
+    int del(Long id);
 }

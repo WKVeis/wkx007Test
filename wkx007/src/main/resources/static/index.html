@@ -1,55 +1,360 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
+﻿<!DOCTYPE html>
+<html>
 
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>多功能管理平台</title>
     <script src="./include/js/jquery-3.2.1.min.js"></script>
-</head>
-<title><h1>Fx</h1></title>
-<body>
-<canvas id="c" height="1500" width="1000" style="display: block;	margin: 0 auto;"></canvas>
-<script>
-    var b = document.body;
-    var c = document.getElementsByTagName('canvas')[0];
-    var a = c.getContext('2d');
-    document.body.clientWidth;
-</script>
-<script>
-    // start of submission //
-    with(m = Math) C = cos,
-            S = sin,
-            P = pow,
-            R = random;
-    c.width = c.height = f = 750;
-    h = -330;
-    function p(a, b, c) {
-        if (c > 60) return [S(a * 7) * (13 + 5 / (.2 + P(b * 4, 4))) - S(b) * 50, b * f + 50, 625 + C(a * 7) * (13 + 5 / (.2 + P(b * 4, 4))) + b * 400, a * 1 - b / 2, a];
-        A = a * 2 - 1;
-        B = b * 2 - 1;
-        if (A * A + B * B < 1) {
-            if (c > 37) {
-                n = (j = c & 1) ? 6: 4;
-                o = .5 / (a + .01) + C(b * 125) * 3 - a * 300;
-                w = b * h;
-                return [o * C(n) + w * S(n) + j * 610 - 390, o * S(n) - w * C(n) + 550 - j * 350, 1180 + C(B + A) * 99 - j * 300, .4 - a * .1 + P(1 - B * B, -h * 6) * .15 - a * b * .4 + C(a + b) / 5 + P(C((o * (a + 1) + (B > 0 ? w: -w)) / 25), 30) * .1 * (1 - B * B), o / 1e3 + .7 - o * w * 3e-6]
-            }
-            if (c > 32) {
-                c = c * 1.16 - .15;
-                o = a * 45 - 20;
-                w = b * b * h;
-                z = o * S(c) + w * C(c) + 620;
-                return [o * C(c) - w * S(c), 28 + C(B * .5) * 99 - b * b * b * 60 - z / 2 - h, z, (b * b * .3 + P((1 - (A * A)), 7) * .15 + .3) * b, b * .7]
-            }
-            o = A * (2 - b) * (80 - c * 2);
-            w = 99 - C(A) * 120 - C(b) * ( - h - c * 4.9) + C(P(1 - b, 7)) * 50 + c * 2;
-            z = o * S(c) + w * C(c) + 700;
-            return [o * C(c) - w * S(c), B * 99 - C(P(b, 7)) * 50 - c / 3 - z / 1.35 + 450, z, (1 - b / 1.2) * .9 + a * .1, P((1 - b), 20) / 4 + .05]
+    <script src="./include/js/vue.min.js"></script>
+    <script src="./include/js/api.js?v2"></script>
+    <script src="./include/js/cache.js"></script>
+    <script src="./include/js/util.js"></script>
+
+    <link rel="stylesheet" href="./include/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <script src="./include/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="./include/bootstrap-3.3.7-dist/datetimepicker/bootstrap-datetimepicker.min.css">
+    <script src="./include/bootstrap-3.3.7-dist/datetimepicker/moment.min.js"></script>
+    <script src="./include/bootstrap-3.3.7-dist/datetimepicker/locales/zh-cn.js"></script>
+    <script src="./include/bootstrap-3.3.7-dist/datetimepicker/bootstrap-datetimepicker.min.js"></script>
+    <!-- <script src="./include/bootstrap-3.3.7-dist/datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script> -->
+
+    <link rel="stylesheet" href="./include/bootstrap-3.3.7-dist/bootstrap-select/css/bootstrap-select.min.css">
+    <script src="./include/bootstrap-3.3.7-dist/bootstrap-select/js/bootstrap-select.min.js"></script>
+    <script src="./include/bootstrap-3.3.7-dist/bootstrap-select/js/i18n/defaults-zh_CN.min.js"></script>
+
+    <link rel="stylesheet" href="./include/bootstrap-3.3.7-dist/formvalidation/css/bootstrapValidator.min.css">
+    <script src="./include/bootstrap-3.3.7-dist/formvalidation/js/bootstrapValidator.min.js"></script>
+    <script src="./include/bootstrap-3.3.7-dist/formvalidation/js/language/zh_CN.js"></script>
+
+    <link rel="stylesheet" href="./include/layui-v2.4.5/layui/css/layui.css">
+    <script src="./include/layui-v2.4.5/layui/layui.js"></script>
+
+    <link rel="stylesheet" href="include/css/element-ui/index.css">
+    <script src="include/js/element-ui/index.js"></script>
+    <script src="include/js/axios.min.js"></script>
+    <script src="include/js/Sortable.js"></script>
+
+    <link rel="stylesheet" href="./include/css/theme-green/index.css">
+    <link rel="stylesheet" href="./include/css/sidebar.css">
+    <link rel="stylesheet" href="./include/css/css.css">
+    <script src="./include/js/go-debug.js"></script>
+    <style type="text/css">
+        .current {
+            background-color: #1f5073 !important;
         }
-    }
-    setInterval('for(i=0;i<1e4;i++)if(s=p(R(),R(),i%46/.74)){z=s[2];x=~~(s[0]*f/z-h);y=~~(s[1]*f/z-h);if(!m[q=y*f+x]|m[q]>z)m[q]=z,a.fillStyle="rgb("+~(s[3]*h)+","+~(s[4]*h)+","+~(s[3]*s[3]*-80)+")",a.fillRect(x,y,1,1)}', 0)
-    // end of submission //
-</script>
+        body {
+            overflow-y: auto !important;
+            padding-right:0!important;
+        }
+        table{
+            margin: 0px;
+            padding: 0px;
+            width: 30%;
+            border-collapse: collapse;
+            table-layout: fixed;  /*不添加此样式，会全部显示    */
+        }
+        table td{
+            border: 1px solid #eef2e9;
+             text-overflow: ellipsis;  /* 加上，显示省略号*/
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        table td:hover { /* 鼠标滑过  显示隐藏的内容  伴有横向的滚动条 */
+            overflow:auto;
+            text-overflow:clip;
+        }
+    </style>
+
+</head>
+
+<body >
+
+    <nav id="wl" class="navbar navbar-default">
+        <div class="container-fluid">
+
+            <div class="navbar-header">
+                功能管理平台
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a @click="logout">退出</a>
+                    </li>
+                    <li><a href="#" style="color: #00FF00">{{name}}</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="wrapper">
+        <!-- Sidebar Holder -->
+        <nav id="sidebar" style="">
+
+            <ul class="list-unstyled components">
+                <li class="active">
+                    <a href="#systemSubmenu" data-toggle="collapse" aria-expanded="false">
+                        <i class="glyphicon glyphicon-home"></i>
+                        系统管理
+                    </a>
+                    <ul class="collapse list-unstyled" id="systemSubmenu">
+                        <li>
+                            <a href="#" data-path="./account/index">账号管理</a>
+                        </li>
+                        <li>
+                            <a href="#" data-path="./logpage/index">日志管理</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content Holder -->
+        <div id="content">
+
+        </div>
+    </div>
+
+    <div class="modal bs-example-modal-sm" id="modal-loading" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">正在加载</h4>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-alert" class="modal fade bs-example-modal-sm" data-backdrop="static" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">{{title}}</h4>
+                </div>
+                <div class="modal-body">
+                    <p v-html="msg"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" @click="confirm">确定</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+    <script type="text/javascript">
+
+        // var companyType;
+        var userInfo;
+        var name;
+        var menagerType;
+        var path=sessionStorage.getItem("url");
+        if(path==''||path==undefined||path=='undefined'){
+            path='./account/index';
+        }
+        $(document).ready(function () {
+            modal.loading();
+            userInfo = JSON.parse(window.parent.sessionStorage.getItem("loginUser"));
+            console.log(userInfo);
+            if (userInfo==null) {
+                window.location.href="login.html";
+            } else{
+                name = userInfo.name;
+            }
+            console.log(window.parent.sessionStorage);
+            sessionStorage.setItem("token",window.parent.sessionStorage.getItem("token"));
+
+            var vWl=new Vue({
+                el:"#wl",
+                data:{
+
+                },
+                methods:{
+                    logout:function (e) {
+                        if(confirm("确认退出吗？")!=true){
+                            return;
+                        }
+                        e.preventDefault();
+                        api.logout().done(function (res) {
+                            console.log("9090909");
+                            console.log(res);
+                            if (res.result.code == 0) {
+                                modal.alert("提示", "注销成功");
+                               location.href = "login.html"
+                            }
+                            else {
+                                modal.alert("提示", res.result.msg);
+                            }
+                        }).fail(function (res) {
+                            modal.alert("退出错误", "内部错误");
+                        });
+                    }
+                },
+
+
+        });
+
+            var sidebar=new Vue({
+                el:"#sidebar",
+                data:{
+
+                },
+                methods:{
+                    authorize:authorize,
+                }
+                
+            });
+
+            $(document).on("click", "a", function (e) {
+                var url = $(this).attr("data-path");
+                
+                if (url) {
+                    load(url);
+                }
+                e.preventDefault();
+            });
+        });
+        var pages = [];
+        var load = function (url) {
+            unload();
+            $("#modal-loading").modal("show");
+            $.get(url + ".html?" + Math.random()).done(
+
+                function (res) {
+                    $("#content").html(res);
+                    $("[data-authorize]").each(function (i, e) {
+                        if (!authorize($(e).attr("data-authorize"))) {
+                            $(e).remove();
+                        }
+                    });
+                    $.getScript(url + ".js?" + Math.random());
+                    $("#modal-loading").modal("hide");
+                    path=url;
+                    sessionStorage.setItem("url",url);
+                }
+                
+            ).fail(function () {
+                $("#modal-loading").modal("hide");
+                modal.alert("网络超时");
+            });
+        };
+        var authorize =function authorize(val) {
+            // console.log(val);
+            // console.log(menagerType);
+            if(val==menagerType){
+                return true;
+            }
+            return false;
+        };
+        var unload = function () {
+            while (pages.length > 0) {
+                var page = pages.shift();
+                page.unload && page.unload();
+            }
+        }
+
+
+        var vAlert = new Vue({
+            el: "#modal-alert",
+            data: {
+                title: "",
+                msg: "",
+                callback: null,
+                isConfirm: false
+            },
+            methods: {
+                confirm: function () {
+                    this.isConfirm = true;
+                    $("#modal-alert").modal("hide");
+                }
+            }
+        });
+        $("#modal-alert").on("hidden.bs.modal", function (e) {
+            if (vAlert.isConfirm) {
+                vAlert.isConfirm = false;
+                vAlert.callback && vAlert.callback();
+            }
+        })
+
+        var modal = {};
+
+        modal.loading = function (show) {
+            if (show === false) {
+                $("#modal-loading").modal("hide");
+            }
+            else {
+                $("#modal-loading").modal("show");
+            }
+        }
+
+        modal.alert = function (title, msg, callback) {
+            modal.loading(false);
+
+            vAlert.title = title;
+            vAlert.msg = msg;
+            vAlert.callback = callback;
+            $("#modal-alert").modal("show");
+
+        }
+
+        function pagination() {
+            var previous;
+            var next;
+            var list = [];
+
+            var first = this.index <= 5 ? 1 : this.count <= 10 ? 1 : this.index - 4;
+
+            // if (this.count > 10 && this.index > 5) {
+                previous = {
+                    // page: Math.max(this.index - 10, 1),
+                    page: Math.max(this.index - 1, 1),
+                    class: ""
+                }
+            // }
+
+            // if (this.index + 6 <= this.count && this.count > 10) {
+                next = {
+                    // page: Math.min(this.index + 10, this.count),
+                    page: Math.min(this.index + 1, this.count),
+                    class: ""
+                }
+            // }
+
+            for (var i = 0; i < 10; i++) {
+                var j = first + i;
+                if (j > this.count) break;
+                list.push({
+                    page: j,
+                    class: j == this.index ? "active" : ""
+                });
+            }
+
+            return {
+                previous: previous,
+                next: next,
+                list: list
+            };
+        }
+
+        load(path);
+
+    </script>
 </body>
+
 </html>

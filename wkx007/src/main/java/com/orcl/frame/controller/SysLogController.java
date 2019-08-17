@@ -29,7 +29,6 @@ public class SysLogController {
     private SysLogServiceInterface serviceInterface;
     @PostMapping("/list")
     @ApiOperation(value = "PageList", notes = "Data pagination of system log")
-    @SysLog("查看日志列表")
     public String list(@RequestBody SysLogRequest request) throws Exception{
         Response response = new Response();
         Result result = new Result();

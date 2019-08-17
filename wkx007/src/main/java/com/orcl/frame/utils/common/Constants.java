@@ -24,6 +24,7 @@ public class Constants {
         LOGINUSER_INFO_ISNULL("000020","没有此用户信息"),
         LOGIN_ERROR("000021","登录失败"),
         SYSTEMLOG_LIST_ERROR("000022", "日志列表获取失败"),
+        ACCOUNT_DELETE_ERROR("000023","账户信息删除失败"),
         ;
         private String code;
         private String msg;
