@@ -8,7 +8,7 @@ $(function () {
                 total: 1,
                 userName:"",
                 index: 1,
-                size: 10
+                size: 5
             },
             computed: {
                 count: function () {

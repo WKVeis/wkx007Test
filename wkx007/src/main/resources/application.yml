@@ -14,3 +14,11 @@ logging:
   config: classpath:logback-spring.xml
   level:
     root: info
+
+pagehelper:
+    offsetAsPageNum: true
+    pageSizeZero: true
+    params: pageNum=pageHelperStart;pageSize=pageHelperRows;
+    reasonable: false
+    rowBoundsWithCount: true
+    supportMethodsArguments: false

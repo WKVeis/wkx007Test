@@ -1,6 +1,7 @@
 package com.orcl.frame.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.orcl.frame.dao.SysLogDao;
@@ -40,7 +41,7 @@ public class SysLogServiceInterfaceImpl implements SysLogServiceInterface {
         queryWrapper.eq(StringUtils.isNotBlank(request.getUserName()), SysLogModel::getUserName, request.getUserName())
                 .eq(StringUtils.isNotBlank(request.getIp()), SysLogModel::getIp, request.getIp());
         List<SysLogModel> list = sysLogDao.selectList(queryWrapper);
-        PageInfo<Account> res = new PageInfo(list);
+        PageInfo res = new PageInfo(list);
         return res;
     }
 }
