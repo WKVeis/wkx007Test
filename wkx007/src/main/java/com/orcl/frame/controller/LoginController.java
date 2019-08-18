@@ -30,6 +30,7 @@ public class LoginController {
     private AccountServiceInterface accountServiceInterface;
     @PostMapping("/login")
     @ApiOperation(value = "login", notes = "user login")
+    @SysLog("用户登录")
     public String login(@RequestBody LoginRequest request, HttpSession session) throws Exception {
         Response response = new Response();
         Result result = new Result();
@@ -55,6 +56,20 @@ public class LoginController {
             result.setState(e.getError());
         } catch (Exception e) {
             result.setState(new ProjectException(Constants.Return.LOGIN_ERROR, e.getMessage()));
+        }
+        response.setResult(result);
+        return response.toJson();
+    }
+
+    @PostMapping("/login/out")
+    @ApiOperation(value = "login out", notes = "account loginout")
+    public String logout(HttpSession session) throws Exception{
+        Response response = new Response();
+        Result result = new Result();
+        try {
+            session.removeAttribute("loginUser");
+        } catch (Exception e) {
+            result.setState(new ProjectException(Constants.Return.LOGINOUT_ERROR, e.getMessage()));
         }
         response.setResult(result);
         return response.toJson();

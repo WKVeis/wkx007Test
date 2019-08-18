@@ -77,13 +77,13 @@
         <div class="container-fluid">
 
             <div class="navbar-header">
-                功能管理平台
+                Function management platform
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a @click="logout">退出</a>
+                        <a @click="logout">exit</a>
                     </li>
                     <li><a href="#" style="color: #00FF00">{{name}}</a></li>
                 </ul>
@@ -99,14 +99,14 @@
                 <li class="active">
                     <a href="#systemSubmenu" data-toggle="collapse" aria-expanded="false">
                         <i class="glyphicon glyphicon-home"></i>
-                        系统管理
+                        System management
                     </a>
                     <ul class="collapse list-unstyled" id="systemSubmenu">
                         <li>
-                            <a href="#" data-path="./account/index">账号管理</a>
+                            <a href="#" data-path="./account/index">account management</a>
                         </li>
                         <li>
-                            <a href="#" data-path="./logpage/index">日志管理</a>
+                            <a href="#" data-path="./logpage/index">log management</a>
                         </li>
                     </ul>
                 </li>
@@ -175,7 +175,7 @@
             if (userInfo==null) {
                 window.location.href="login.html";
             } else{
-                name = userInfo.name;
+                name = userInfo;
             }
             console.log(window.parent.sessionStorage);
             sessionStorage.setItem("token",window.parent.sessionStorage.getItem("token"));

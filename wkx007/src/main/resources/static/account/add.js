@@ -6,6 +6,7 @@ $(function () {
             data: {
                 "userName": "",
                 "sex": "",
+                "age": "",
                 "password":"",
                 "repassword":""//确认密码，后台不接收
             },

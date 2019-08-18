@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>登录</title>
+    <title>Login</title>
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="./include/bootstrap-3.3.7-dist/css/bootstrap.min.css">
     <!-- Custom styles for this template -->
@@ -22,21 +22,21 @@
 <div class="container">
     <div class="form-signin">
 
-        <h1 class="form-title">多功能管理平台</h1>
-        <h3 class="form-title">用户登录</h3>
+        <h1 class="form-title">Multi-Function Platform</h1>
+        <h3 class="form-title">User Login</h3>
 
         <div class="form-group">
-        <input type="text" class="form-control name" placeholder="账号" required v-model="userName" />
+        <input type="text" style="text-align:center" class="form-control name" placeholder="account" required v-model="userName" />
         </div>
 
         <div class="form-group">
-        <input type="password" class="form-control" placeholder="密码" required v-model="password" autocomplete = "new-password"/>
+        <input type="password" style="text-align: center" class="form-control" placeholder="password" required v-model="password" autocomplete = "new-password"/>
         </div>
         <!--<div class="remember">-->
             <!--<label for="chk">-->
                 <!--<input id="chk" type="checkbox" v-model="remember"> 记住账号</label>-->
         <!--</div>-->
-        <input type="button" value="登录" id="btnPost" class="btn btn-lg btn-primary btn-block" />
+        <input type="button" value="Enter" id="btnPost" class="btn btn-lg btn-primary btn-block" />
         <div class="msg alert alert-danger" v-if="msg" v-html="msg"></div>
     </div>
 </div>

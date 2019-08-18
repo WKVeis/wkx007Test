@@ -25,6 +25,7 @@ public class Constants {
         LOGIN_ERROR("000021","登录失败"),
         SYSTEMLOG_LIST_ERROR("000022", "日志列表获取失败"),
         ACCOUNT_DELETE_ERROR("000023","账户信息删除失败"),
+        LOGINOUT_ERROR("000024","用户退出失败"),
         ;
         private String code;
         private String msg;

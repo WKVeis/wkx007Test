@@ -23,7 +23,6 @@ $(function () {
                     load("./account/edit");
                 },
                 del: function (id) {
-                    alert(id);
                     modal.alert("提示","确定要删除吗?",function(){
                         modal.loading(true);
                         api.deleteAccount(id).done(function (res) {

@@ -39,7 +39,8 @@ public class SysLogServiceInterfaceImpl implements SysLogServiceInterface {
         PageHelper.startPage(request.getPageNum(), request.getPageSize());
         LambdaQueryWrapper<SysLogModel> queryWrapper = new LambdaQueryWrapper();
         queryWrapper.eq(StringUtils.isNotBlank(request.getUserName()), SysLogModel::getUserName, request.getUserName())
-                .eq(StringUtils.isNotBlank(request.getIp()), SysLogModel::getIp, request.getIp());
+                .eq(StringUtils.isNotBlank(request.getIp()), SysLogModel::getIp, request.getIp())
+        .orderByDesc(SysLogModel::getCreateDate);
         List<SysLogModel> list = sysLogDao.selectList(queryWrapper);
         PageInfo res = new PageInfo(list);
         return res;
