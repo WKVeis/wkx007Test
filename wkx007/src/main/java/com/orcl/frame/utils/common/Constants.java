@@ -26,6 +26,7 @@ public class Constants {
         SYSTEMLOG_LIST_ERROR("000022", "日志列表获取失败"),
         ACCOUNT_DELETE_ERROR("000023","账户信息删除失败"),
         LOGINOUT_ERROR("000024","用户退出失败"),
+        ROLE_ADD_ERROR("000025", "角色添加失败"),
         ;
         private String code;
         private String msg;
