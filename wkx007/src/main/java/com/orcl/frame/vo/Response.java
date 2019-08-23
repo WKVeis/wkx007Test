@@ -9,9 +9,10 @@ import com.orcl.frame.utils.JsonUtil;
  */
 public class Response {
     private Object result;
-    private boolean isSuccess;
+    private boolean isSuccess=true;
     public Response() {
     }
+
     public Object getResult() {
         return result;
     }
