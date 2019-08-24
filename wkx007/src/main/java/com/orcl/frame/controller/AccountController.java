@@ -48,8 +48,10 @@ public class AccountController {
             }
         } catch (ProjectException e) {   //捕捉到刚才的异常并设置返回对象的状态
             result.setState(e.getError());
+            response.setSuccess(false);
         } catch (Exception e) {//捕捉异常，返回添加失败状态，返回错误消息
             result.setState(new ProjectException(Constants.Return.ACCOUNT_ADD_ERROR, e.getMessage()));
+            response.setSuccess(false);
         }
         response.setResult(result);
         return response.toJson();

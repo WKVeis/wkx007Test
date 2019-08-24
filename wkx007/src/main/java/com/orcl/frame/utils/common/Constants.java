@@ -27,6 +27,7 @@ public class Constants {
         ACCOUNT_DELETE_ERROR("000023","账户信息删除失败"),
         LOGINOUT_ERROR("000024","用户退出失败"),
         ROLE_ADD_ERROR("000025", "角色添加失败"),
+        ACCOUNTCONTACTROLE_ADD_ERROR("000026", "用户角色添加失败"),
         ;
         private String code;
         private String msg;

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Administrator on 2019/8/23.
@@ -19,8 +20,8 @@ public class RoleServiceInterfaceImpl implements RoleServiceInterface {
     private RoleDao dao;
     @Override
     public int add(Role role) {
-        //        String Id=UUID.randomUUID().toString().replaceAll("-","");
-//        account.setId(Id);
+        //String Id=UUID.randomUUID().toString().replaceAll("-","");
+        //account.setId(Id);
         role.setCreateTime(new Date());
         role.setUpdateTime(null);//添加用户不需要更新时间，前端可以不穿这个参数，后台只是暂时写死
         int i = dao.insert(role);
@@ -40,5 +41,10 @@ public class RoleServiceInterfaceImpl implements RoleServiceInterface {
     @Override
     public int del(Long id) {
         return 0;
+    }
+
+    public List<String> select() {
+        List res = dao.selectAll();
+        return res;
     }
 }
