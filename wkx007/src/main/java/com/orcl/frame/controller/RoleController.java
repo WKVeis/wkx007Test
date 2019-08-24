@@ -45,6 +45,7 @@ public class RoleController {
         response.setResult(result);
         return response.toJson();
     }
+    @SysLog("查找所有的角色")
     @GetMapping("/select")
     @ApiOperation(value = "selectAll", notes = "all roles")
     public List<String> selectAll() {
