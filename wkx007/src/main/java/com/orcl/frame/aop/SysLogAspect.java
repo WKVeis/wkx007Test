@@ -46,40 +46,44 @@ public class SysLogAspect {
     SysLogModel sysLog = new SysLogModel();//日志实体类
      //JoinPoint我们所说的连接点，封装了SpringAop中切面方法的信息,在切面方法中添加JoinPoint参数,就可以获取到封装了该方法信息的JoinPoint对象
      @Before("logPointCut()")
-    public void saveLog(JoinPoint joinPoint) {
-        MethodSignature signature = (MethodSignature) joinPoint.getSignature();
-        Method method = signature.getMethod();
-        SysLog syslog = method.getAnnotation(SysLog.class);
-        if (null != syslog) {
-            //注解上的描述
-            sysLog.setOperation(syslog.value());
-        }
-        //请求的参数
-        Object[] args = joinPoint.getArgs();
-         String params = "";
-         if (null != args && args.length > 0) {
-              params = JSON.toJSONString(args[0]);
-         }else {
-              params = "no params";
-         }
-        sysLog.setParams(params);
+    public void saveLog(JoinPoint joinPoint){
+         try {
+             MethodSignature signature = (MethodSignature) joinPoint.getSignature();
+             Method method = signature.getMethod();
+             SysLog syslog = method.getAnnotation(SysLog.class);
+             if (null != syslog) {
+                 //注解上的描述
+                 sysLog.setOperation(syslog.value());
+             }
+             //请求的参数
+             Object[] args = joinPoint.getArgs();
+             String params = "";
+             if (null != args && args.length > 0) {
+                 params = JSON.toJSONString(args[0]);
+             } else {
+                 params = "no params";
+             }
+             sysLog.setParams(params);
 
-        //请求的方法名
-        String className = joinPoint.getTarget().getClass().getName();
-        String methodName = signature.getName();
-        sysLog.setMethod(className + "." + methodName + "()");
+             //请求的方法名
+             String className = joinPoint.getTarget().getClass().getName();
+             String methodName = signature.getName();
+             sysLog.setMethod(className + "." + methodName + "()");
 
-        //获取request
-        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-        String ip = IPUtils.getIpAddr(request);
-        sysLog.setIp(ip);
+             //获取request
+             HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+             String ip = IPUtils.getIpAddr(request);
+             sysLog.setIp(ip);
 
-        //获取操作用户
+             //获取操作用户
 //         LoginRequest o = (LoginRequest)request.getSession().getAttribute("loginUser");//从seeion中获取登录对象
-        String userName ="007" ;//当前登录的用户名
-        sysLog.setUserName(userName);
-        sysLog.setCreateDate(new Date());
+             String userName = "007";//当前登录的用户名
+             sysLog.setUserName(userName);
+             sysLog.setCreateDate(new Date());
 //        serviceInterface.insert(sysLog);
+         } catch (Throwable e) {
+             LOGGER.error("发生异常是{}",e);
+         }
     }
     @AfterReturning(returning = "ret", pointcut = "logPointCut()")
     public void doAfterReturning(Object ret) throws Throwable {
