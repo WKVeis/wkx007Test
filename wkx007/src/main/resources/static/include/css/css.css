@@ -1,0 +1,74 @@
+﻿body {background-color:#edf1f7}
+ul, li, ol, dl, dt, dd { list-style:none;padding:0;margin:0}
+
+.table thead th { background-color:#d4ecff;border-bottom:1px solid #d4ecff}
+
+.content-body{padding: 15px 0 !important}
+
+/* .page-company .search{margin: 10px 0}
+.page-company .pagination{margin-top: 0}
+
+.page-company-add .form-group label:first-child{width: 145px}
+.page-company-add .form-group label span{color:#d44950} */
+
+.page-add .form-group label span{color:#d44950}
+.page-add .form-group label:first-child{min-width: 145px}
+.page-add .form-group label.required::before{content: "* ";color: #d44950;}
+
+.page-list .search{margin: 10px 0}
+.page-list .pagination{margin-top: 0}
+
+.page-api-detail pre{display: block;max-width: 600px;word-wrap: break-word;white-space: pre-wrap;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#header { background-color:#6d7fcc;height:60px;font-size:24px;color:white;line-height:60px}
+#sidebar { background-color:#222D32}
+#sidebar a.active { background-color:#1E282C}
+#sidebar ul li.active > a, a[aria-expanded="true"] {background-color:#1E282C}
+.sidebar-header{ background-color:#222D32 !important}
+
+#sidebar ul ul a {background-color:#2C3B41 }
+#sidebar ul.components { border:none;padding:0}
+.navbar { padding:0;margin:0;background-color:#3C8DBC;}
+.navbar-header {font-size:18px; line-height:50px;padding-left:10px;color:white}
+.navbar-default .navbar-nav > li > a { color:white}
+#content .content-body { padding:15px}
+
+
+
+
+.content-header {  position: relative;  padding: 15px 15px 0 0;  display:flex;align-items:center}
+.content-header > h1 {  margin: 0 10px 0 0;  font-size: 24px;}
+.content-header > h1 > small {  font-size: 15px;  display: inline-block;  padding-left: 4px;  font-weight: 300;}
+.content-header > .breadcrumb {  float: right;  background: transparent;  margin-top: 0;  margin-bottom: 0;  font-size: 12px;  padding: 7px 5px;  position: absolute;  top: 15px;  right: 10px;  border-radius: 2px;}
+.content-header > .breadcrumb > li > a {  color: #444;  text-decoration: none;  display: inline-block;}
+.content-header > .breadcrumb > li > a > .fa,
+.content-header > .breadcrumb > li > a > .glyphicon,
+.content-header > .breadcrumb > li > a > .ion {margin-right: 5px;}
+.content-header > .breadcrumb > li + li:before {content: '>\00a0';}
+
+@media (max-width: 991px) {
+  .content-header > .breadcrumb {position: relative;margin-top: 5px;top: 0;right: 0;float: none;background: #d2d6de;padding-left: 10px;}
+  .content-header > .breadcrumb li:before {color: #97a0b3;}
+}
