@@ -32,6 +32,14 @@
         <div class="form-group">
         <input type="password" style="text-align: center" class="form-control" placeholder="password" required v-model="password" autocomplete = "new-password"/>
         </div>
+
+        <div class="form-group">
+            <input type="password" style="text-align: center" class="form-control" placeholder="verification" required v-model="captcha" autocomplete = "new-captcha"/>
+        </div>
+        <div class="form-group">
+            <img alt="如果看不清楚，请单击图片刷新！" class="pointer" :src="srcimage" @click="refreshCode">
+            &nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;" @click="refreshCode" style="color: #f7f7f7">refresh</a>
+        </div>
         <!--<div class="remember">-->
             <!--<label for="chk">-->
                 <!--<input id="chk" type="checkbox" v-model="remember"> 记住账号</label>-->
@@ -49,8 +57,15 @@
                 data: {
                     userName:"",
                     password: "",
-                    msg: ""
+                    captcha:"",
+                    msg: "",
+                    srcimage:'captcha.jpg'
                 },
+                methods: {
+                    refreshCode: function () {
+                        this.srcimage = "/v1/captcha.jpg?t=" + $.now();
+                    },
+                }
             });
             $("#btnPost").click(function () {
                 api.login(v.$data).done(function (res) {

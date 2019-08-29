@@ -14,4 +14,6 @@ public class LoginRequest {
     private String userName;
     @ApiModelProperty(value = "密码", required = true, example = "!QAZ2wsx")
     private String password;
+    @ApiModelProperty(value = "验证码", required = true)
+    private String captcha;
 }

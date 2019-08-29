@@ -28,6 +28,8 @@ public class Constants {
         LOGINOUT_ERROR("000024","用户退出失败"),
         ROLE_ADD_ERROR("000025", "角色添加失败"),
         ACCOUNTCONTACTROLE_ADD_ERROR("000026", "用户角色添加失败"),
+        LOGIN_KAPTCHA_ISNULL("000027","验证码输入错误"),
+        KAPTCHA_ISTIME("000028","验证码过时了"),
         ;
         private String code;
         private String msg;
