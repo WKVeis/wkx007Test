@@ -79,7 +79,7 @@ public class LoginController {
             if (null == account) {
                 throw new ProjectException(Constants.Return.LOGINUSER_INFO_ISNULL);//数据库没有该用户的注册信息
             }
-            String token = UUID.randomUUID().toString().replace("-", "") + "2019";
+            String token = UUID.randomUUID().toString().replace("-", "") + "2019";//生成token
             result.getData().put("token", token);
             result.getData().put("loginUser", request.getUserName());
             session.setAttribute("loginUser", account.getUserName());

@@ -1,11 +1,9 @@
 package com.orcl.frame.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.orcl.frame.dao.SysLogDao;
-import com.orcl.frame.model.Account;
 import com.orcl.frame.model.SysLogModel;
 import com.orcl.frame.request.SysLogRequest;
 import com.orcl.frame.service.SysLogServiceInterface;
@@ -43,6 +41,24 @@ public class SysLogServiceInterfaceImpl implements SysLogServiceInterface {
         .orderByDesc(SysLogModel::getCreateDate);
         List<SysLogModel> list = sysLogDao.selectList(queryWrapper);
         PageInfo res = new PageInfo(list);
+        return res;
+    }
+
+    /**
+     * 查询所有的log记录
+     * @return
+     */
+    public List<SysLogModel> selectAll() {
+        List res = sysLogDao.selectAll();
+        return res;
+    }
+
+    /**
+     * 查询表的所有属性列名
+     * @return
+     */
+    public List<String> selectAllColumn() {
+        List<String> res = sysLogDao.selectAllColumn();
         return res;
     }
 }
