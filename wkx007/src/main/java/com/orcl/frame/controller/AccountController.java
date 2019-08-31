@@ -110,11 +110,11 @@ public class AccountController {
     @SysLog("删除账户信息")
     @PostMapping("/del")
     @ApiOperation(value = "update", notes = "Change information")
-    public String delete(@RequestBody AccountRequest request) throws Exception {
+    public String delete(@RequestParam Long id) throws Exception {
         Result result = new Result();
         Response response = new Response();
         try {
-            int res = accountServiceInterface.del(request.getId());
+            int res = accountServiceInterface.del(id);
             if (res == 0) {
                 throw new ProjectException(Constants.Return.ACCOUNT_DELETE_ERROR);
             }
@@ -136,11 +136,11 @@ public class AccountController {
      */
     @PostMapping("/findById")
     @ApiOperation(value = "findById", notes = "find data by ID")
-    public String findById(@RequestBody AccountRequest request) throws Exception {
+    public String findById(@RequestParam Long id) throws Exception {
         Result result = new Result();
         Response response = new Response();
         try {
-            Account account = accountServiceInterface.findById(request.getId());
+            Account account = accountServiceInterface.findById(id);
             result.getData().put("data", account);
         } catch (ProjectException e) {
             result.setState(new ProjectException(e.getError()));

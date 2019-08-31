@@ -36,7 +36,7 @@ import java.util.List;
 public class SysLogAspect {
     @Autowired
     private SysLogServiceInterface serviceInterface;
-    private static final Logger LOGGER = LoggerFactory.getLogger(WebLogAspect.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(SysLogAspect.class);
 
     //Pointcut的名称 就是simplePointcut，此方法不能有返回值，该方法只是一个标示
     //用@annotation指定我们定义的注解
