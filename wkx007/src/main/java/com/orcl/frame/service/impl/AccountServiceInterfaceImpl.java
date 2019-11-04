@@ -86,5 +86,10 @@ public class AccountServiceInterfaceImpl implements AccountServiceInterface {
         Account account = accountDao.selectOne(queryWrapper);
         return account;
     }
+
+    @Override
+    public Account findMessage(String userName,String sex) {
+        return accountDao.finBytwo(userName,sex);
+    }
 }
 

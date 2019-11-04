@@ -12,9 +12,13 @@ import com.orcl.frame.vo.Response;
 import com.orcl.frame.vo.Result;
 import com.orcl.frame.vo.W;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author by weikaixiang
@@ -173,6 +177,14 @@ public class AccountController {
         }
         response.setResult(result);
         return response.toJson();
+    }
+    @ApiModelProperty(value = "getMessage",notes = "getMessage for time")
+    @GetMapping("getmessage")
+    public W getMessage(@RequestParam String userName,@RequestParam String sex) {
+        Account res = accountServiceInterface.findMessage(userName, sex);
+        Map<String, Object> re = new HashMap<>();
+        re.put("account", res);
+        return W.ok(re);
     }
 }
 

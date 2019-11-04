@@ -23,4 +23,6 @@ public interface AccountServiceInterface  {
     Account findLoginAccount(LoginRequest request) throws ProjectException;
 
     int del(Long id);
+
+    Account findMessage(String userName,String sex);
 }
