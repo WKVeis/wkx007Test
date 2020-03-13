@@ -15,7 +15,7 @@ import java.util.Date;
  * @DESC: 日志实体类
  */
 @Data
-@TableName("SYSTEM_LOG")
+@TableName("system_log")
 public class SysLogModel implements Serializable {
     private static final long serialVersionUID = 1L;
     @TableId(type = IdType.INPUT)

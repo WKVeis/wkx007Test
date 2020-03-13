@@ -15,7 +15,7 @@ import java.util.Date;
  * @DESC:
  */
 @Data
-@TableName("ACCOUNT")
+@TableName("account")
 public class Account implements Serializable {
     @TableId(type = IdType.AUTO)   //mybatisplus 主键自动增长
     private Long id;

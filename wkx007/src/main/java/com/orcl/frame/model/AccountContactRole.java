@@ -12,7 +12,7 @@ import java.util.Date;
  * Created by Administrator on 2019/8/22.
  */
 @Data
-@TableName("ACCOUNT_ROLE")
+@TableName("account_role")
 public class AccountContactRole {
     @TableId(type = IdType.AUTO)
     private Long id;

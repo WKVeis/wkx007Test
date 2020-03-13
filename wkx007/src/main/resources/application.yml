@@ -1,5 +1,5 @@
 server:
-  port: 8090
+  port: 8081
 
 # datasource
 spring:
@@ -12,7 +12,7 @@ spring:
 
 #mysql5.7
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/bookmanage?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    url: jdbc:mysql://127.0.0.1:3306/bookmanage?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false
     username: root
     password: 123456
 
