@@ -15,4 +15,19 @@ public class SysLogRequest extends PageParams {
     private String userName;
     @ApiModelProperty(name= "IP地址",required=false,example="127.0.0.1",dataType = "String")
     private String ip;
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getIp() {
+        return ip;
+    }
+
+    public void setIp(String ip) {
+        this.ip = ip;
+    }
 }

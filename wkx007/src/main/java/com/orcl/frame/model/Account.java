@@ -32,4 +32,60 @@ public class Account implements Serializable {
     @TableField(value = "Update_Time")
     private Date UpdateTime;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public Date getCreateTime() {
+        return CreateTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        CreateTime = createTime;
+    }
+
+    public Date getUpdateTime() {
+        return UpdateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        UpdateTime = updateTime;
+    }
+
 }

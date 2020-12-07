@@ -13,4 +13,19 @@ public class AccountContractRoleRequest extends PageParams {
     private Long accountId;
     @ApiModelProperty(value = "角色的id", required = true)
     private Long roleId;
+    public Long getAccountId() {
+        return accountId;
+    }
+
+    public void setAccountId(Long accountId) {
+        this.accountId = accountId;
+    }
+
+    public Long getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(Long roleId) {
+        this.roleId = roleId;
+    }
 }

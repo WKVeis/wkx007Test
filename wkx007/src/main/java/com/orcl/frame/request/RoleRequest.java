@@ -13,4 +13,19 @@ public class RoleRequest extends PageParams {
     private String roleName;
     @ApiModelProperty(value = "角色等级", required = true)
     private String level;
+    public String getRoleName() {
+        return roleName;
+    }
+
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
+    }
+
+    public String getLevel() {
+        return level;
+    }
+
+    public void setLevel(String level) {
+        this.level = level;
+    }
 }

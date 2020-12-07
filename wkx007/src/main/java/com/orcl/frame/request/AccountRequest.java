@@ -12,6 +12,38 @@ import lombok.Data;
  */
 @Data
 public class AccountRequest extends PageParams {
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     @ApiModelProperty(name = "账号",required=false,example="admin",dataType = "String")
     private String userName;
     @ApiModelProperty(name= "性别",required=false,example="男",dataType = "String")

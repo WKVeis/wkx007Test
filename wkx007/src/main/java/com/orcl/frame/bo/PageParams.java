@@ -18,6 +18,21 @@ public class PageParams {
     @ApiModelProperty(value = "条", required = true, example = "10", dataType = "int")
     @NotNull
     private int pageSize=10;
+    public int getPageNum() {
+        return pageNum;
+    }
+
+    public void setPageNum(int pageNum) {
+        this.pageNum = pageNum;
+    }
+
+    public int getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(int pageSize) {
+        this.pageSize = pageSize;
+    }
 }
 
 
