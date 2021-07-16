@@ -73,7 +73,7 @@ public class AccountServiceInterfaceImpl implements AccountServiceInterface {
     }
 
     @Override
-    public int del(Long id) {
+    public int del(String id) {
         int i = accountDao.deleteById(id);
         return i;
     }

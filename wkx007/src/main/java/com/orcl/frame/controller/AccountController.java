@@ -16,6 +16,8 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+
 /**
  * @author by weikaixiang
  * @date 2019/8/1 0001
@@ -110,11 +112,17 @@ public class AccountController {
     @SysLog("删除账户信息")
     @PostMapping("/del")
     @ApiOperation(value = "update", notes = "Change information")
-    public String delete(@RequestParam Long id) throws Exception {
+    public String delete(@RequestBody HashMap<String, String> map) throws Exception {
+        /*
+        关于ajax请求spring后台出现 Required String parameter ‘id’ is not present异常，
+        如果前端传入的是json数据那么后端使用
+        @RequestBody HashMap<String, String> map
+        进行接收，然后再通过map.get(“id”)获取对应的数据
+         */
         Result result = new Result();
         Response response = new Response();
         try {
-            int res = accountServiceInterface.del(id);
+            int res = accountServiceInterface.del(map.get("id"));
             if (res == 0) {
                 throw new ProjectException(Constants.Return.ACCOUNT_DELETE_ERROR);
             }
